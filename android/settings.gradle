@@ -1,0 +1,3 @@
+rootProject.name = 'react_native_firebase_facebook_login'
+
+include ':app'
