@@ -9,42 +9,22 @@ import {
   Text
 } from 'react-native';
 
+const config = {
+  apiKey: "AIzaSyBBAvfR4ffQmKtg2GQTqAi3htH3R2ehvqw",
+  authDomain: "roompackersdb.firebaseapp.com",
+  databaseURL: "https://roompackersdb.firebaseio.com",
+  storageBucket: "roompackersdb.appspot.com",
+  messagingSenderId: "332389298611"
+}
+
+import LoginPage from '../loginPage/LoginPage'
+
 class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <LoginPage config={config} />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 module.exports = App;
