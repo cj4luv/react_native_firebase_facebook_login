@@ -28,11 +28,11 @@ class FirebaseAuthFBLogin extends Component {
 
       isChangeView: false,
     }
+    //init firebase data
     const firebaseApp = firebase.initializeApp(this.props.config);
   }
 
-  //페이스북 연동 로그인
-  _fbLogin() {
+  _onPressLogin() {
     //페이스북 SDK Login Manager 요청 할 권한과 함께 호출
     LoginManager.logInWithReadPermissions(['public_profile', 'email']).then(
       (result) => {
@@ -70,8 +70,6 @@ class FirebaseAuthFBLogin extends Component {
 
                 if (errorCode === 'auth/account-exists-with-different-credential') {
                   alert('You have already signed up with a different auth provider for that email.');
-                  // If you are using multiple auth providers on your app you should handle linking
-                  // the user's accounts here.
                 } else {
                   console.error(error);
                 }
@@ -89,18 +87,18 @@ class FirebaseAuthFBLogin extends Component {
     );
   }
 
-  _userCheck() {
+  showUserInfo() {
     let user = firebase.auth().currentUser;
     if(user) {
       console.log('user');
-      console.log(user);
       console.log(this.state);
+      return
     } else {
       console.log('plz sign up');
     }
   }
 
-  _fbLogOut() {
+  _onPressLogOut() {
     // const firebaseApp = firebase.initializeApp(this.props.config);
     firebase.auth().signOut().then( () => {
       // Sign-out successful.
@@ -121,10 +119,10 @@ class FirebaseAuthFBLogin extends Component {
     if(this.state.isChangeView === false) {
       return (
         <View style={styles.container}>
-          <Button onPress={()=>this._fbLogin()}>
-            Facebook Login
+          <Button onPress={()=>this._onPressLogin()}>
+            Facebook Login Button
           </Button>
-          <Button onPress={()=>this._userCheck()}>
+          <Button onPress={()=>this.showUserInfo()}>
             Login Checker
           </Button>
         </View>
@@ -138,10 +136,10 @@ class FirebaseAuthFBLogin extends Component {
           <Text>{this.state.userEmail}</Text>
           <Text>{this.state.firebaseUid}</Text>
           <Text>{this.state.facebookToken}</Text>
-          <Button onPress={()=>this._fbLogOut()}>
+          <Button onPress={()=>this._onPressLogOut()}>
             Facebook Login out
           </Button>
-          <Button onPress={()=>this._userCheck()}>
+          <Button onPress={()=>this.showUserInfo()}>
             Login Checker
           </Button>
         </View>
