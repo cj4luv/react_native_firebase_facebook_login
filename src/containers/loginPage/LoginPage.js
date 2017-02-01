@@ -12,8 +12,6 @@ import Button from '../../components/buttons/Button';
 import FBSDK, {
   LoginManager,
   AccessToken,
-  GraphRequest,
-  GraphRequestManager,
 } from 'react-native-fbsdk';
 
 import * as firebase from 'firebase';
@@ -107,11 +105,11 @@ class LoginPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{borderWidth:1, width:400, height:400}} source={{url:this.state.photoURL}}></Image>
+        <Image style={{ width:400, height:400}} source={{url:this.state.photoURL}}></Image>
         <Text>{this.state.userName}</Text>
         <Text>{this.state.userEmail}</Text>
         <Text>{this.state.firebaseUid}</Text>
-        <Button style={{borderWidth:1}} onPress={()=>this._fbLogin()}>
+        <Button onPress={()=>this._fbLogin()}>
           Facebook Login
         </Button>
         <Text>{this.state.facebookToken}</Text>
