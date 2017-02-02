@@ -99,7 +99,6 @@ class FirebaseAuthFBLogin extends Component {
   }
 
   _onPressLogOut() {
-    // const firebaseApp = firebase.initializeApp(this.props.config);
     firebase.auth().signOut().then( () => {
       // Sign-out successful.
       console.log("sign Out");
@@ -112,7 +111,6 @@ class FirebaseAuthFBLogin extends Component {
       // An error happened.
       console.log(error);
     });
-
   }
 
   render() {
