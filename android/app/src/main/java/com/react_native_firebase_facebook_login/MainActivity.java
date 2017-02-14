@@ -15,25 +15,11 @@ import com.facebook.reactnative.androidsdk.FBSDKPackage;
 
 import android.app.Application;
 
+import com.facebook.react.shell.MainReactPackage;
+
 public class MainActivity extends ReactActivity {
   CallbackManager mCallbackManager =
     MainApplication.getCallbackManager();
-
-  @Override
-  protected List<ReactPackage> getPackages() {
-    mCallbackManager = new CallbackManager.Factory().create();
-    ReactPackage packages[] = new ReactPackage[]{
-      new MainReactPackage(),
-      new FBSDKPackage(mCallbackManager),
-    };
-    return Arrays.<ReactPackage>asList(packages);
-  }
-
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    mCallbackManager.onActivityResult(requestCode, resultCode, data);
-  }
 
   /**
    * Returns the name of the main component registered from JavaScript.
@@ -43,4 +29,11 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
       return "react_native_firebase_facebook_login";
   }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    mCallbackManager.onActivityResult(requestCode, resultCode, data);
+  }
+
 }

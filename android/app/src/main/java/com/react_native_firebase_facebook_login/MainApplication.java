@@ -34,12 +34,21 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
+    // @Override
+    // protected List<ReactPackage> getPackages() {
+    //   return Arrays.<ReactPackage>asList(
+    //       new MainReactPackage(),
+    //       new FBSDKPackage(mCallbackManager)
+    //   );
+    // }
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new FBSDKPackage(mCallbackManager)
-      );
+      mCallbackManager = new CallbackManager.Factory().create();
+      ReactPackage packages[] = new ReactPackage[]{
+        new MainReactPackage(),
+        new FBSDKPackage(mCallbackManager),
+      };
+      return Arrays.<ReactPackage>asList(packages);
     }
   };
 

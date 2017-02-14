@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">react_native_firebase_facebook_login</string>
+    <string name="facebook_app_id">887868641348282</string>
 </resources>
