@@ -16,7 +16,7 @@ import java.util.List;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-// import com.facebook.reactnative.androidsdk.FBSDKPackage;
+
 import com.facebook.appevents.AppEventsLogger;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -34,21 +34,12 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
-    // @Override
-    // protected List<ReactPackage> getPackages() {
-    //   return Arrays.<ReactPackage>asList(
-    //       new MainReactPackage(),
-    //       new FBSDKPackage(mCallbackManager)
-    //   );
-    // }
     @Override
     protected List<ReactPackage> getPackages() {
-      mCallbackManager = new CallbackManager.Factory().create();
-      ReactPackage packages[] = new ReactPackage[]{
-        new MainReactPackage(),
-        new FBSDKPackage(mCallbackManager),
-      };
-      return Arrays.<ReactPackage>asList(packages);
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+          new FBSDKPackage(mCallbackManager)
+      );
     }
   };
 

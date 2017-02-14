@@ -129,7 +129,7 @@ class FirebaseAuthFBLogin extends Component {
     else {
       return (
         <View style={styles.container}>
-          <Image style={{ width:400, height:400}} source={{url:this.state.photoURL}}></Image>
+          <Image style={{ width:400, height:400, borderWidth:1 }} source={{uri:this.state.photoURL}}></Image>
           <Text>{this.state.userName}</Text>
           <Text>{this.state.userEmail}</Text>
           <Text>{this.state.firebaseUid}</Text>

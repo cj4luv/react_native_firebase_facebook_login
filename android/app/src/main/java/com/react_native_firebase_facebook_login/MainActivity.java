@@ -1,21 +1,7 @@
 package com.react_native_firebase_facebook_login;
-
 import com.facebook.react.ReactActivity;
-
 import android.content.Intent;
-import android.os.Bundle;
-import com.facebook.FacebookSdk;
 import com.facebook.CallbackManager;
-
-import java.util.Arrays;
-import java.util.List;
-
-import com.facebook.react.ReactPackage;
-import com.facebook.reactnative.androidsdk.FBSDKPackage;
-
-import android.app.Application;
-
-import com.facebook.react.shell.MainReactPackage;
 
 public class MainActivity extends ReactActivity {
   CallbackManager mCallbackManager =
