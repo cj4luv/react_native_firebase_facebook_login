@@ -118,7 +118,7 @@ class FirebaseAuthFBLogin extends Component {
       return (
         <View style={styles.container}>
           <Button onPress={()=>this._onPressLogin()}>
-            Facebook Login Button
+            {this.props.btnText}
           </Button>
           <Button onPress={()=>this.showUserInfo()}>
             Login Checker

@@ -9,13 +9,12 @@ import {
   Text
 } from 'react-native';
 
-
-import LoginPage from '../loginPage/LoginPage'
+import RouterContainer from '../routePage/RouterContainer'
 
 class App extends Component {
   render() {
     return (
-      <LoginPage/>
+      <RouterContainer/>
     );
   }
 }
