@@ -15,8 +15,14 @@ import {
 } from 'react-native-router-flux';
 
 import LoginPage from '../loginPage/LoginPage';
-import EmailReg from '../loginPage/EmailReg';
+import CheckedEmail from '../loginPage/CheckedEmail';
 import Password from '../loginPage/Password';
+import SendPassword from '../loginPage/SendPassword';
+
+import SignUpPassword from '../loginPage/signUp/SignUpPassword';
+import SignUp from '../loginPage/signUp/SignUp';
+
+import MainPage from '../mainPage/MainPage';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 const WINDOW_HEIGHT = Dimensions.get('window').height;
@@ -33,11 +39,15 @@ class RouterContainer extends Component {
   render() {
     return (
       <Router>
-
         <Scene key="loginPage" component={LoginPage} title="opening" initial/>
-        <Scene key="emailReg" component={EmailReg} title="email_sign_in" />
-        <Scene key="password" component={Password} title="email_sign_up"/>
+        <Scene key="checkedEmail" component={CheckedEmail} title="email_sign_in" />
+        <Scene key="password" component={Password} title="password"/>
+        <Scene key="sendPassword" component={SendPassword} title="Send Password"/>
 
+        <Scene key="signUpPassword" component={SignUpPassword} title="Sign Up Password"/>
+        <Scene key="signUp" component={SignUp} title="Sign Up"/>
+
+        <Scene key="mainPage" component={MainPage} title="main Page"/>
       </Router>
     );
   }

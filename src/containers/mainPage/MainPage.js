@@ -8,23 +8,18 @@ import {
 } from 'react-native';
 
 import Button from '../../components/buttons/Button';
-import FirebaseAuthFBLogin from '../../components/loginBtn/FirebaseAuthFBLogin';
-
-import Config from './constants';
 
 import {
   Actions,
   ActionConst
 } from 'react-native-router-flux';
 
-
-class LoginPage extends Component {
+class MainPage extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <FirebaseAuthFBLogin config={Config.cfg_firebase_cho} btnText='페이스북 로그인' />
-        <Button onPress={()=>Actions.checkedEmail()}>이메일 로그인</Button>
+        <Text>MainPage</Text>
       </View>
     );
   }
@@ -38,4 +33,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = LoginPage;
+module.exports = MainPage;
