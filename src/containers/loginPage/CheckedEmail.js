@@ -89,27 +89,6 @@ class CheckedEmail extends Component {
     })
   }
 
-  // // 회원 가입 하기
-  // _firebaseSignUp(email, password) {
-  //   firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-  //     this._sendEmailVerification()
-  //     console.log('회원 가입이 되셨습니다.')
-  //   }).catch((error) => {
-  //
-  //     let errorCode = error.code;
-  //     let errorMessage = error.message;
-  //
-  //     if(errorCode === 'auth/email-already-in-use') {
-  //       console.log('이미 가입된 이메일입니다.')
-  //     }
-  //     if(errorCode === 'auth/invalid-email') {
-  //       console.log('정상적인 이메일주소를 기입해주세요')
-  //     }
-  //
-  //     console.log(errorMessage);
-  //   })
-  // }
-
   render() {
     return (
       <View style={styles.container}>
@@ -121,12 +100,6 @@ class CheckedEmail extends Component {
             placeholder='이메일을 입력하세요'
             value={this.state.userEmail}
           />
-          {/* <TextInput style={styles.textInput}
-            underlineColorAndroid='transparent' returnKeyType="done"
-            onChangeText={(text) => this.setState({password: text})}
-            placeholder='비밀번호' secureTextEntry={true}
-            value={this.state.password}
-          /> */}
           <Text>{this.state.validCheckMessage}</Text>
         </View>
 

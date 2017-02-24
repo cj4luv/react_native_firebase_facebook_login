@@ -47,7 +47,6 @@ class SignUpPassword extends Component {
     } else {
       console.log('비밀번호는 6~16자리로 특수문자 하나를 입력해 생성해주세요');
     }
-
   }
 
   render() {
