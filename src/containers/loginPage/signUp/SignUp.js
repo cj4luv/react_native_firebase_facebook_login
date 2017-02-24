@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 import {
   View,
   StyleSheet,
@@ -38,7 +39,47 @@ class SignUp extends Component {
       isVisble: false,
 
       validCheckMessage: '유효성검사 결과 경고메세지가 보여지는 부분',
+      validCheckMail: '이메일 인증 유무 판단'
     }
+  }
+
+  _onAuthStateChanged() {
+    console.log('onAuth')
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user) {
+        let displayName = user.displayName;
+        let email = user.email;
+        let emailVerified = user.emailVerified;
+        let photoURL = user.photoURL;
+        let isAnonymous = user.isAnonymous;
+        let uid = user.uid;
+        let providerData = user.providerData;
+
+        if(!emailVerified) {
+          console.log('email 인증이 되지 않으셨습니다.')
+          this.setState({validCheckMail:'email 인증이 되지 않으셨습니다.'})
+        }
+        if(emailVerified) {
+          console.log('email 인증이 된 상태입니다.')
+        }
+      } else {
+        console.log('user 정보를 가져올수 없습니다.')
+      }
+    })
+  }
+
+  //현재 로그인한 사용자 가져오기 인증 여부 검사
+  componentWillMount() {
+    this._onAuthStateChanged();
+
+    //setInterval(()=>this._onAuthStateChanged(),1000);
+
+    // axios.get('/SignUp').then((response) => {
+    //   console.log('axios');
+    //   //setTimeout(getNumber, 1000 * 5); // REPEAT THIS EVERy 5 SECONDS
+    // });
+
+
   }
 
   //이메일 주소 인증 메일 보내기
@@ -47,7 +88,7 @@ class SignUp extends Component {
     firebase.auth().currentUser.sendEmailVerification().then((user) => {
       // Email Verification sent!
       // [START_EXCLUDE]
-      alert('Email Verification Sent!');
+      alert('인증 이메일을 발송했습니다.');
       // [END_EXCLUDE]
     }).catch((error)=>{
       console.log(error);
@@ -60,7 +101,7 @@ class SignUp extends Component {
     firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
       this._sendEmailVerification();
       console.log('회원 가입이 되셨습니다.');
-      Actions.checkedEmail();
+      //Actions.checkedEmail();
     }).catch((error) => {
 
       let errorCode = error.code;
@@ -68,12 +109,11 @@ class SignUp extends Component {
 
       if(errorCode === 'auth/email-already-in-use') {
         console.log('이미 가입된 이메일입니다.')
+        Actions.checkedEmail();
       }
       if(errorCode === 'auth/invalid-email') {
         console.log('정상적인 이메일주소를 기입해주세요')
       }
-
-      console.log(errorMessage);
     })
   }
 
@@ -92,6 +132,8 @@ class SignUp extends Component {
           <CheckButton text='약관동의' checked={this.state.isVisble} onChange={()=>{this.setState({isVisble:true})}}/>
           <Text>{this.state.validCheckMessage}</Text>
         </View>
+
+        <Text>{this.state.validCheckMail}</Text>
 
         <Button onPress={()=> {
           if(nickNameValid.test(this.state.nickName) && this.state.isVisble) {

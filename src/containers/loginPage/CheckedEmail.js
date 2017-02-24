@@ -67,7 +67,6 @@ class CheckedEmail extends Component {
 
   //현재 로그인한 사용자 가져오기 인증 여부 검사
   componentWillMount() {
-    console.log('')
     firebase.auth().onAuthStateChanged((user)=>{
       if(user) {
         let displayName = user.displayName;
