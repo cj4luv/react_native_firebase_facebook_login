@@ -16,37 +16,49 @@ const WINDOW_HEIGHT = Dimensions.get('window').height;
 const PIXEL_X = WINDOW_WIDTH/375;
 const PIXEL_Y = WINDOW_HEIGHT/667;
 
+import * as firebase from 'firebase';
+
 import {
   Actions,
   ActionConst
 } from 'react-native-router-flux';
 
-const passwordRules = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
-
-class SignUpPassword extends Component {
+class Password extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       userEmail: this.props.userEmail,
       password: '',
-      passwordChecked:'',
 
       validCheckMessage: '유효성검사 결과 경고메세지가 보여지는 부분',
     }
   }
 
-  _passwordChecked(ps1, ps2) {
-    if(passwordRules.test(ps1) && passwordRules.test(ps2) ) {
-      if(ps1 === ps2) {
-        console.log('비밀번호 일치')
-        Actions.signUp({userEmail: this.state.userEmail, password:this.state.password});
+  // 로그인 하기
+  _firebaseSignIn(email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
+        // 이메인증 확인
+        if(user.emailVerified) {
+          console.log('이메일이 정상 적으로 인증 되어 로그인 되셨습니다.');
+          Actions.mainPage();
+        } else {
+          this.setState({validCheckMessage:'이메일 인증을 해주세요'});
+        }
+
+    }).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // [START_EXCLUDE]
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
       } else {
-        console.log('두개의 비밀번호가 일치하지 않습니다.')
+        alert(errorMessage);
       }
-    } else {
-      console.log('비밀번호는 6~16자리로 특수문자 하나를 입력해 생성해주세요');
-    }
+      console.log(error);
+      // [END_EXCLUDE]
+    });
   }
 
   render() {
@@ -60,17 +72,10 @@ class SignUpPassword extends Component {
             value={this.state.password}
           />
           <Text>{this.state.validCheckMessage}</Text>
-
-          <TextInput style={styles.textInput}
-            underlineColorAndroid='transparent' returnKeyType="done"
-            onChangeText={(text) => this.setState({passwordChecked: text})}
-            placeholder='비밀번호 확인' secureTextEntry={true}
-            value={this.state.passwordChecked}
-          />
-          <Text>{this.state.validCheckMessage}</Text>
         </View>
 
-        <Button onPress={()=>this._passwordChecked(this.state.password, this.state.passwordChecked)} >다음</Button>
+        <Button onPress={()=>this._firebaseSignIn(this.state.userEmail, this.state.password)} >로그인</Button>
+        <Button onPress={()=>Actions.sendPassword()}> 비밀번호가 기억나지 않습니다 </Button>
       </View>
     );
   }
@@ -89,4 +94,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = SignUpPassword;
+module.exports = Password;

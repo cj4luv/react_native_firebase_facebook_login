@@ -8,7 +8,7 @@ import {
   TextInput
 } from 'react-native';
 
-import Button from '../../components/buttons/Button';
+import Button from '../../../components/buttons/Button';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 const WINDOW_HEIGHT = Dimensions.get('window').height;
@@ -22,8 +22,6 @@ import {
   Actions,
   ActionConst
 } from 'react-native-router-flux';
-
-import FirebaseAuthFBLogin from '../../components/loginBtn/FirebaseAuthFBLogin';
 
 import * as firebase from 'firebase';
 

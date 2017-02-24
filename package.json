@@ -7,7 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.15.3",
     "firebase": "^3.6.7",
     "react": "15.4.2",
     "react-native": "0.40.0",

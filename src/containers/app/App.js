@@ -9,12 +9,12 @@ import {
   Text
 } from 'react-native';
 
-import RouterContainer from '../routePage/RouterContainer'
+import FirebaseEmailLogin from '../../modules/firebaseEmailLogin/routePage/RouterContainer'
 
 class App extends Component {
   render() {
     return (
-      <RouterContainer/>
+      <FirebaseEmailLogin />
     );
   }
 }

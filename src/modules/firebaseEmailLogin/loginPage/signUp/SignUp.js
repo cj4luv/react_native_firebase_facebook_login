@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios'
 import {
   View,
   StyleSheet,
@@ -14,8 +13,8 @@ import {
   ActionConst
 } from 'react-native-router-flux';
 
-import Button from '../../../components/buttons/Button';
-import CheckButton from '../../../components/buttons/CheckButton';
+import Button from '../../../../components/buttons/Button';
+import CheckButton from '../../../../components/buttons/CheckButton';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 const WINDOW_HEIGHT = Dimensions.get('window').height;
@@ -71,14 +70,6 @@ class SignUp extends Component {
   //현재 로그인한 사용자 가져오기 인증 여부 검사
   componentWillMount() {
     this._onAuthStateChanged();
-
-    //setInterval(()=>this._onAuthStateChanged(),1000);
-
-    // axios.get('/SignUp').then((response) => {
-    //   console.log('axios');
-    //   //setTimeout(getNumber, 1000 * 5); // REPEAT THIS EVERy 5 SECONDS
-    // });
-
 
   }
 

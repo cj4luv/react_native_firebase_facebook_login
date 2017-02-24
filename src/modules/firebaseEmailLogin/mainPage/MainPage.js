@@ -7,7 +7,7 @@ import {
   Dimensions
 } from 'react-native';
 
-import Button from '../../components/buttons/Button';
+import Button from '../../../components/buttons/Button';
 
 import {
   Actions,

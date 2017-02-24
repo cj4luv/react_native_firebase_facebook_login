@@ -8,7 +8,7 @@ import {
   TextInput
 } from 'react-native';
 
-import Button from '../../components/buttons/Button';
+import Button from '../../../components/buttons/Button';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 const WINDOW_HEIGHT = Dimensions.get('window').height;
@@ -103,9 +103,7 @@ class CheckedEmail extends Component {
           <Text>{this.state.validCheckMessage}</Text>
         </View>
 
-
         <Button onPress={()=>this._fetchProvidersForEmail(this.state.userEmail)} >다음</Button>
-        {/* <Button onPress={()=>this._firebaseSignUp(this.state.userEmail, this.state.password)}> 회원가입 </Button> */}
         <Button onPress={()=>firebase.auth().signOut()} >로그아웃</Button>
 
       </View>

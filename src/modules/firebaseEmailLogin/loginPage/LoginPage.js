@@ -7,9 +7,8 @@ import {
   Dimensions
 } from 'react-native';
 
-import Button from '../../components/buttons/Button';
-import FirebaseAuthFBLogin from '../../components/loginBtn/FirebaseAuthFBLogin';
-import FirebaseAuthEmail from '../../components/loginBtn/FirebaseAuthEmail';
+import Button from '../../../components/buttons/Button';
+import FirebaseAuthFBLogin from '../../../components/loginBtn/FirebaseAuthFBLogin';
 
 import Config from './constants';
 
@@ -24,9 +23,8 @@ class LoginPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <FirebaseAuthFBLogin config={Config.cfg_firebase_cho} btnText='페이스북 로그인' /> */}
-        <FirebaseAuthEmail config={Config.cfg_firebase_cho} />
-        {/* <Button onPress={()=>Actions.checkedEmail()}>이메일 로그인</Button> */}
+        <FirebaseAuthFBLogin config={Config.cfg_firebase_cho} btnText='페이스북 로그인' />
+        <Button onPress={()=>Actions.checkedEmail()}>이메일 로그인</Button>
       </View>
     );
   }

@@ -5,8 +5,8 @@ import {
   ScrollView,
   StyleSheet,
   View,
-  BackAndroid
 } from 'react-native';
+
 import {
   Actions,
   Scene,
