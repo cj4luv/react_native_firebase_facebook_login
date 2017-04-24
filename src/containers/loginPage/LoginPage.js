@@ -24,7 +24,7 @@ class LoginPage extends Component {
     return (
       <View style={styles.container}>
         <FirebaseAuthFBLogin config={config} />
-        <Text>어여쁜 민영님!!12123123</Text>
+        <Text>어여쁜 민영님!!12123sdfsdfsdfssdf123</Text>
       </View>
     );
   }
